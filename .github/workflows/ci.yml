@@ -20,7 +20,7 @@ jobs:
       - name: Check required files
         run: |
           for f in AGENTS.md SKILL.md README.md VERSION LICENSE; do
-            test -f $$f && echo "$$f ok" || (echo "$$f missing"; exit 1)
+            test -f "$f" && echo "$f ok" || (echo "$f missing"; exit 1)
           done
 
       - name: Check SKILL.md trigger phrases
