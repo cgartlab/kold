@@ -1,5 +1,8 @@
 # Kold
 
+[![CI](https://github.com/cgartlab/kold/actions/workflows/ci.yml/badge.svg)](https://github.com/cgartlab/kold/actions/workflows/ci.yml)
+[![Argus-Flash Review](https://github.com/cgartlab/kold/actions/workflows/argus-review.yml/badge.svg)](https://github.com/cgartlab/kold/actions/workflows/argus-review.yml)
+
 Code agent for frontend design and development. Works in any agent framework.
 
 ## What is Kold?
