@@ -2,6 +2,24 @@
 
 All notable changes are documented here. Format follows [Keep a Changelog](https://keepachangelog.com/).
 
+## [0.2.0] — 2026-06-19
+
+### Added
+- Argus feedback loop protocol documented in AGENTS.md (7-step loop, comment format, config)
+- `examples/profile-card.html` — test component; verified through full Argus review cycle
+
+### Changed
+- AGENTS.md: Kold-Argus Workflow section rewritten with full feedback loop flow diagram and protocol
+- AGENTS.md: Argus Comment Format section added (P0-P3 severity, Found/Expected/Token structure)
+- VERSION: 0.1.1 → 0.2.0
+
+### Fixed
+- CI workflow: bash syntax error from `$$` pseudo-escapes (missing GH Actions expression context)
+
+### Verified
+- Full Kold→PR→Argus→Kold fix→Argus re-review loop tested end-to-end on PR #1
+- 17 issues found → all P0/P1 resolved → verdict PASS
+
 ## [0.1.0] — 2026-06-13
 
 ### Added
