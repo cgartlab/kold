@@ -1,7 +1,7 @@
 # Kold
 
-[![CI](https://img.shields.io/github/workflow/status/cgartlab/kold/CI?label=CI)](https://github.com/cgartlab/kold/actions/workflows/ci.yml)
-[![Argus-Flash Review](https://img.shields.io/github/workflow/status/cgartlab/kold/Argus-Flash%20Review?label=Argus-Flash)](https://github.com/cgartlab/kold/actions/workflows/argus-review.yml)
+[![CI](https://github.com/cgartlab/kold/actions/workflows/ci.yml/badge.svg)](https://github.com/cgartlab/kold/actions/workflows/ci.yml)
+[![Argus-Flash Review](https://github.com/cgartlab/kold/actions/workflows/argus-review.yml/badge.svg)](https://github.com/cgartlab/kold/actions/workflows/argus-review.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 ![Version](https://img.shields.io/badge/version-0.2.0-blue)
 
