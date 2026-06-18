@@ -31,15 +31,52 @@ Kold runs independently in any agent framework: OpenClaw, Claude Code, OpenCode,
 
 ## Kold-Argus Workflow
 
-Kold and Argus work together in the following flow:
+Kold and Argus operate in a fully automated feedback loop:
 
-1. Kold produces frontend code
-2. Kold submits a PR to the target repository
-3. Argus (via GitHub Argus App) reviews the PR
-4. Review must pass before the PR can be merged
-5. **All merge operations require human approval**
+```
+Kold push → PR opened → Argus reviews → comments on PR
+         → Kold reads comments → Kold fixes → Kold force push
+         → Argus re-reviews → loop until P0/P1 cleared
+         → Kold marks PR ready for human review
+```
 
-Kold never merges its own PRs. Kold never bypasses the review gate.
+### Argus Feedback Loop Protocol
+
+When Kold opens a PR in a repo that has the `argus-flash` GitHub App installed:
+
+1. **Wait for Argus review** — Argus will comment via `argus-flash[bot]` on the PR
+2. **Read Argus comments** — filter for `argus-flash[bot]` comments, parse the issue list
+3. **Fix issues in order of severity** — P0 first, then P1, then P2, then P3
+4. **Force push to the same branch** — do NOT open a new PR; force push preserves the review history
+5. **Re-check after force push** — Argus will auto-re-review on the `synchronize` event
+6. **Loop until P0 and P1 are zero** — keep fixing and force pushing until Argus reports no P0/P1
+7. **Mark ready** — when Argus verdict is PASS with no P0/P1, the PR is ready for human review
+
+### Argus Comment Format (for parsing)
+
+Argus comments use a fixed format:
+
+```
+[P severity] <file>:<line> — <issue description>
+  Found:   <what the code currently says>
+  Expected: <what it should say>
+  Token:    <the design token it should use, if applicable>
+```
+
+Severity levels:
+- **P0** — Blocking, must fix (e.g. bare oklch in component rule, missing dark mode override)
+- **P1** — High, must fix (e.g. missing aria-label, hardcoded spacing)
+- **P2** — Medium, should fix (e.g. empty catch blocks, semantic violations)
+- **P3** — Low, polish (cosmetic issues)
+
+### Verified Working Configuration
+
+- **App:** `argus-flash` GitHub App (`github.com/apps/argus-flash`)
+- **Workflow:** `.github/workflows/argus-review.yml` — triggers on `pull_request: [opened, synchronize, ready_for_review]`
+- **Composite action:** `cgartlab/argus/.github/actions/argus-review@main`
+- **Secrets required:** `ARGUS_FLASH_APP_ID`, `ARGUS_FLASH_PRIVATE_KEY`
+
+**Kold never merges its own PRs. Kold never bypasses the review gate. All merge operations require human approval.**
 
 ---
 
@@ -75,4 +112,4 @@ make validate
 - **Kold** — produces frontend code
 - **Argus** — reviews frontend code (hardcoded values, a11y issues, design token violations, dark mode gaps)
 
-They operate in a strict Kold -> Argus -> human workflow.
+They operate in a strict Kold → Argus → human workflow.
