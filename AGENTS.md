@@ -1,6 +1,6 @@
 # AGENTS.md — Kold
 
-**Version:** 0.1.0 | **Project:** https://github.com/cgartlab/kold | **License:** MIT
+**Version:** 0.2.0 | **Project:** https://github.com/cgartlab/kold | **License:** BSL 1.1
 
 ---
 
@@ -107,12 +107,54 @@ This is not a periodic retrospective — it is a continuous process. Core files 
 
 ## Version Management
 
-`VERSION` file is the source of truth. After bumping version:
+### Source of Truth
+
+`VERSION` file is the single source of truth for the current version.
+
+### Version Number Rules
+
+Follow [Semantic Versioning 2.0.0](https://semver.org/):
+
+| Increment | When |
+|-----------|-------|
+| `MAJOR`  | Incompatible API changes |
+| `MINOR`  | New backwards-compatible functionality |
+| `PATCH`  | Backwards-compatible bug fixes |
+
+### Release Workflow
 
 ```bash
-make stamp-version
+# 1. Bump the version (creates CHANGELOG entry, updates VERSION, stages files)
+make bump-patch   # 0.2.0 → 0.2.1
+make bump-minor   # 0.2.0 → 0.3.0
+make bump-major   # 0.2.0 → 1.0.0
+
+# 2. Fill in the CHANGELOG entry (add ### Added / ### Changed / ### Fixed items)
+
+# 3. Validate locally
 make validate
+
+# 4. Release (validates, commits, tags, pushes — GitHub Actions creates Release page)
+make release
 ```
+
+### Release Gate
+
+`make release` fails if:
+- No staged changes (run `make bump-*` first)
+- CHANGELOG entry for current version is empty
+- Any `validate` checks fail
+
+### Release Artifacts
+
+GitHub Actions automatically creates a GitHub Release on every tag push (`v*`), with release notes generated from CHANGELOG.md.
+
+### Versioning Tools
+
+| Tool | Purpose |
+|------|---------|
+| `tools/bump_version.py` | Semantic version bump (patch/minor/major) |
+| `tools/validate_versioning.py` | VERSION ↔ CHANGELOG consistency check |
 
 ---
 

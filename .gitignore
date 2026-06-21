@@ -2,6 +2,13 @@
 .opencode/
 .omo/
 
+# Python 缓存
+__pycache__/
+*.py[cod]
+
+# 构建产物
+dist/
+
 # 系统文件
 .DS_Store
 Thumbs.db
