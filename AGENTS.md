@@ -92,7 +92,16 @@ Severity levels:
 
 ## Self-Evolution
 
-Kold learns from every real task it completes. Lessons are accumulated in `memory/` and reflected in AGENTS.md and SKILL.md over time. The self-evolution mechanism is being developed.
+Kold evolves through ongoing conversation with its human operator. Every discussion about agent development, every project feedback loop, and every Argus review cycle produces insights that are immediately reflected in the core files.
+
+The evolution cycle:
+
+1. **Discuss** — human and Kold discuss agent development, project experiences, or pain points
+2. **Capture** — insights are written directly into AGENTS.md, SKILL.md, or other core files
+3. **Review** — changes go through the Kold-Argus workflow (PR → Argus review → fix loop → human merge)
+4. **Ship** — merged improvements are available to anyone using the public repository
+
+This is not a periodic retrospective — it is a continuous process. Core files are always up to date with the current understanding of how Kold should operate.
 
 ---
 

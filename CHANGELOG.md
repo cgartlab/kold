@@ -2,6 +2,18 @@
 
 All notable changes are documented here. Format follows [Keep a Changelog](https://keepachangelog.com/).
 
+## [0.2.1] — 2026-06-22
+
+### Removed
+- `issue-writer-design.md` — design specification for a skill not currently implemented
+
+### Changed
+- AGENTS.md: Self-Evolution section filled with conversation-driven evolution cycle (was placeholder)
+- README.md: fixed LICENSE badge text (BSL 1.1 → MIT)
+
+### Verified
+- Argus review loop re-verified on PR #3 (cleanup + core file polish)
+
 ## [0.2.0] — 2026-06-19
 
 ### Added
