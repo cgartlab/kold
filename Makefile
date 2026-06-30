@@ -10,10 +10,12 @@ help:
 	@echo "  make bump-patch     — bump PATCH (e.g. 0.2.0 → 0.2.1)"
 	@echo "  make bump-minor     — bump MINOR (e.g. 0.2.0 → 0.3.0)"
 	@echo "  make bump-major     — bump MAJOR (e.g. 0.2.0 → 1.0.0)"
-	@echo "  make validate       — run all quality checks"
+	@echo "  make setup          — install lint dependencies"
+	@echo "  make lint           — run HTML/CSS lint checks"
+	@echo "  make validate       — run all quality checks (version + lint)"
 	@echo "  make release        — commit, tag and push a release"
-	@echo "  make package       — create release archive"
-	@echo "  make clean         — remove generated files"
+	@echo "  make package        — create release archive"
+	@echo "  make clean          — remove generated files"
 	@echo ""
 	@echo "  Current version: $(VERSION)"
 
@@ -30,12 +32,24 @@ bump-patch bump-minor bump-major:
 	@echo ""
 	@echo "Files staged. Review, then: make validate && make release"
 
+# ─── Setup ──────────────────────────────────────────────────────
+.PHONY: setup
+setup:
+	@npm install
+
+# ─── Lint ─────────────────────────────────────────────────────────
+.PHONY: lint
+lint: setup
+	@npm run lint
+
 # ─── Validation ──────────────────────────────────────────────────
 .PHONY: validate
 validate:
 	@echo "Running quality checks..."
 	@python3 tools/validate_versioning.py
 	@echo ""
+	@echo "Running lint..."
+	@npm run lint
 
 _check-core-files:
 	@echo "Checking core files exist..."

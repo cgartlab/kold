@@ -12,6 +12,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install
+
       - name: Run versioning checks
         run: python3 tools/validate_versioning.py
 
@@ -20,6 +28,9 @@ jobs:
           for f in AGENTS.md SKILL.md README.md VERSION LICENSE; do
             test -f "$f" && echo "$f ok" || (echo "$f missing"; exit 1)
           done
+
+      - name: Run lint
+        run: npm run lint
 
       - name: Print version
         run: |
