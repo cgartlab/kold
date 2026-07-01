@@ -1,12 +1,23 @@
 ---
 name: kold-frontend-design
-description: "Use when building, implementing, or refactoring frontend UI — components, pages, layouts, interactions, or any visual work in pure HTML/CSS/JS. Use when integrating design tokens, writing CSS custom properties, implementing dark mode, fixing responsiveness, or optimizing accessibility. Use when aesthetic judgment is needed — typography, color harmony, spacing rhythm, visual hierarchy. Trigger phrases: '帮我写一个卡片组件'、'实现这个设计'、'布局在手机上乱了'、'帮我做 dark mode'、'检查一下无障碍'、'这个间距看起来不对'、'帮我设计一个登录页面'、'CSS 怎么写更优雅'"
+description: "Use when building, implementing, or refactoring frontend UI — components, pages, layouts, interactions, or any visual work in pure HTML/CSS/JS. Use when integrating design tokens, writing CSS custom properties, implementing dark mode, fixing responsiveness, or optimizing accessibility. Use when aesthetic judgment is needed — typography, color harmony, spacing rhythm, visual hierarchy."
 version: 0.1.0
 ---
 
 # Kold Frontend Design Skill
 
 When this skill is active, every visual artifact you produce must be precise, token-driven, accessible, and aesthetically sound. Pure HTML/CSS/JS only.
+
+## Trigger phrases
+
+- 帮我写一个卡片组件
+- 实现这个设计
+- 布局在手机上乱了
+- 帮我做 dark mode
+- 检查一下无障碍
+- 这个间距看起来不对
+- 帮我设计一个登录页面
+- CSS 怎么写更优雅
 
 ## Core Principles
 

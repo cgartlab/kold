@@ -9,6 +9,10 @@ __pycache__/
 # 构建产物
 dist/
 
+# Node.js
+node_modules/
+package-lock.json
+
 # 系统文件
 .DS_Store
 Thumbs.db
